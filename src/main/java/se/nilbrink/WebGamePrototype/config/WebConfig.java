@@ -49,6 +49,7 @@ public class WebConfig implements WebMvcConfigurer, ApplicationContextAware {
         resolver.setTemplateMode(TemplateMode.HTML);
         return resolver;
     }
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         int cachePeriodForStaticFilesInSecs = 1;
