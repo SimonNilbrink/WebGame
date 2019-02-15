@@ -10,16 +10,61 @@
     <title>Security Demo</title>
 
     <link rel="stylesheet" href="../static/css/reset.css" th:href="@{/css/reset.css}"/>
+    <link rel="stylesheet" href="../static/css/navbar.css" th:href="@{/css/grid.css}"/>
     <link rel="stylesheet" href="../static/css/navbar.css" th:href="@{/css/navbar.css}"/>
+    <link rel="stylesheet" href="../static/css/navbar.css" th:href="@{/css/sidebar.css}"/>
+    <link rel="stylesheet" href="../static/css/navbar.css" th:href="@{/css/content.css}"/>
+
 </head>
 <body>
 
 <div class="container">
 
-    <section th:replace="~{../static/fragments/header::header}"></section>
-    <div layout:fragment="content">
-    </div>
+    <nav class="header">
+        <p>WebGame</p>
+    </nav>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="#"><img th:src="@{../images/inbox-icon.png}">Inbox</a></li>
+            <li><a href="#"><img th:src="@{../images/now-icon.png}">Now</a></li>
+            <li><a href="#"><img th:src="@{../images/later-icon.png}">Later</a></li>
+            <li><a class="dropdown-btn"><img th:src="@{../images/project-icon.png}">Dropdown
+                <i class="fa fa-caret-down"></i>
+                </a>
+            </li>
+            <ul class="dropdown-container" id="ett">
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+            </ul>
+        </ul>
+    </nav>
+    <div class="content" layout:fragment="content">
 
+
+    <!--
+    <section  th:replace="~{../static/fragments/header::header}"></section>
+    <section  th:replace="~{../static/fragments/sidebar::sidebar}"></section>
+    </div>
+    -->
 </div>
+    <script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = document.getElementById("ett");
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script>
 </body>
 </html>
